@@ -23,8 +23,13 @@
 
 // 4. Include any optional Bootstrap components as you like
 @import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
 
 // 5. Add additional custom code here
 @import "./03-generic/normalize";
 @import "./04-elements/all";
 @import "./04-elements/html";
+@import "./05-objects/container";
+@import "./06-components/toolbar";
