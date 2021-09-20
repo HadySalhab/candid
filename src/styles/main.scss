@@ -1,0 +1,30 @@
+/**
+ * ITCSS - Bootstrap
+ *
+ * 1. Settings................Global variables, config switches.
+ * 2. Tools...................Default mixins and functions.
+ * 3. Generic.................Ground-zero styles (resets, box-sizing).
+ * 4. Base....................Unclassed HTML elements (type selectors).
+ * 5. Objects.................Cosmetic-free design patterns.
+ * 6. Components..............Designed components, chunks of UI.
+ * 7. Trumps..................Helpers and overrides.
+ *
+ */
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+@import "./01-settings/colors";
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// 4. Include any optional Bootstrap components as you like
+@import "~bootstrap/scss/buttons";
+
+// 5. Add additional custom code here
+@import "./03-generic/normalize";
+@import "./04-elements/all";
+@import "./04-elements/html";
