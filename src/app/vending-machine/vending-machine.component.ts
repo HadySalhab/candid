@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, share } from 'rxjs/operators';
+import { map, share, shareReplay, tap } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
 import { StoreState } from '@app/core/model/StoreState';
 import { Summary } from './summary-screen/summary.model';
+import { VendingItem } from '@app/core/model/VendingItem';
 import { VendingStore } from '@app/core/store/VendingStore.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { VendingStore } from '@app/core/store/VendingStore.service';
 })
 export class VendingMachineComponent implements OnInit {
   summary$: Observable<Summary>;
+  vendingItems$: Observable<VendingItem[]>;
   storeState$: Observable<StoreState>;
   constructor(
     private storeActions: StoreActionsService,
@@ -20,7 +22,12 @@ export class VendingMachineComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.storeState$ = this.store.stateChanged.pipe(share());
+    this.storeState$ = this.store.stateChanged.pipe(shareReplay());
+    this.vendingItems$ = this.storeState$.pipe(
+      map((state) => {
+        return [...state.vendingItems];
+      })
+    );
     this.summary$ = this.storeState$.pipe(
       map((state) => {
         return {

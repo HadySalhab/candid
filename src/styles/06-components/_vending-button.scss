@@ -1,0 +1,17 @@
+.vending-button {
+  width: 100%;
+  min-height: 100px;
+  height: 100%;
+  position: relative;
+  border: 1px solid #f3f3f3;
+  background-color: rgba(#bd1340, 0.1);
+  &.selected,
+  &:hover {
+    background-color: rgba(#bd1340, 0.3);
+  }
+  &__price {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
