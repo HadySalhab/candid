@@ -23,13 +23,11 @@ export class VendingMachineComponent implements OnInit {
     this.storeState$ = this.store.stateChanged.pipe(shareReplay());
     this.vendingItems$ = this.storeState$.pipe(
       map((state) => {
-        console.warn(state);
         return [...state.vendingItems];
       })
     );
     this.summary$ = this.storeState$.pipe(
       map((state) => {
-        console.warn(state);
         return {
           totalCansSold: state.totalCansSold,
           totalCashAmount: state.totalCashAmount,
