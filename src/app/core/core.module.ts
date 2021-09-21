@@ -5,6 +5,8 @@ import { VendingStore } from './store/VendingStore.service';
 import { VendingStoreImpl } from './store/VendingStoreImpl.service';
 import { StoreActionsService } from './services/store-actions/StoreActions.service';
 import { StoreActionsImplService } from './services/store-actions/StoreActionsImpl.service';
+import { StoreSelectorsService } from './services/store-selectors/StoreSelectors.service';
+import { StoreSelectorsImplService } from './services/store-selectors/StoreSelectorsImpl.service';
 
 @NgModule({
   declarations: [],
@@ -18,6 +20,10 @@ import { StoreActionsImplService } from './services/store-actions/StoreActionsIm
     {
       provide: StoreActionsService,
       useClass: StoreActionsImplService,
+    },
+    {
+      provide: StoreSelectorsService,
+      useClass: StoreSelectorsImplService,
     },
   ],
 })
