@@ -4,6 +4,6 @@ export interface StoreState {
   totalCansSold: number;
   totalCashAmount: number;
   totalCreditCardAmount: number;
-  selectedItem: number | null;
+  selectedItem: VendingItem | null;
   vendingItems: VendingItem[];
 }
