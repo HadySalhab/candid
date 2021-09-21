@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { VendingStore } from './store/VendingStore';
+import { VendingService } from './services/vending.service';
+import { VendingImplService } from './services/vendingimpl.service';
 import { VendingStoreImpl } from './store/VendingStoreImpl';
 
 @NgModule({
@@ -13,6 +15,10 @@ import { VendingStoreImpl } from './store/VendingStoreImpl';
     {
       provide: VendingStore,
       useClass: VendingStoreImpl,
+    },
+    {
+      provide: VendingService,
+      useClass: VendingImplService,
     },
   ],
 })
