@@ -8,14 +8,14 @@ import initialData from '../data/initial-data.json';
 
 @Injectable()
 export class VendingImplService extends VendingService {
-  private flavours: Flavour[] = initialData;
-  private vendingItems: VendingItem[] = this.mapFlavoursToVendingItems();
-
   private readonly INITIAL_QUANTITY_PER_ITEM = 10;
   private readonly INITIAL_SELECTED_ITEM = null;
   private readonly INITIAL_CANS_SOLD = 0;
   private readonly INITIAL_CASH_AMOUNT = 0;
   private readonly INITIAL_CREDIT_CARD_AMOUNT = 0;
+
+  private flavours: Flavour[] = initialData;
+  private vendingItems: VendingItem[] = this.mapFlavoursToVendingItems();
   private readonly INITIAL_STATE: StoreState = {
     selectedItem: this.INITIAL_SELECTED_ITEM,
     totalCansSold: this.INITIAL_CANS_SOLD,
@@ -31,14 +31,11 @@ export class VendingImplService extends VendingService {
   initializeApp(): void {
     this.store.updateState(this.INITIAL_STATE, VendingActions.INITIALIZE);
   }
-  private mapFlavoursToVendingItems() {
-    return this.flavours.map(
-      (fl) =>
-        ({
-          flavour: fl,
-          quantity: this.INITIAL_QUANTITY_PER_ITEM,
-        } as VendingItem)
-    );
+  private mapFlavoursToVendingItems(): VendingItem[] {
+    return this.flavours.map((fl) => ({
+      flavour: fl,
+      quantity: this.INITIAL_QUANTITY_PER_ITEM,
+    }));
   }
 }
 
