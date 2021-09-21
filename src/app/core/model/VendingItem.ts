@@ -1,4 +1,4 @@
-import { Flavour } from './flavour.model';
+import { Flavour } from './Flavour';
 
 export interface VendingItem {
   flavour: Flavour;

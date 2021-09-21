@@ -1,4 +1,4 @@
-import { StoreState } from '../model/store-state';
+import { StoreState } from '../model/StoreState';
 import { VendingStore } from './VendingStore';
 
 export class VendingStoreImpl extends VendingStore {

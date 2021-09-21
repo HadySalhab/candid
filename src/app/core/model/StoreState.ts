@@ -1,4 +1,4 @@
-import { VendingItem } from './vending-item.model';
+import { VendingItem } from './VendingItem';
 
 export interface StoreState {
   totalCansSold: number;
