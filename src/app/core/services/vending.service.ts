@@ -3,5 +3,5 @@ import { VendingStore } from '../store/VendingStore';
 
 export abstract class VendingService {
   constructor(protected store: VendingStore) {}
-  abstract initializeApp(): void;
+  protected abstract initializeApp(): void;
 }
