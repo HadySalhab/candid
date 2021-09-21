@@ -53,8 +53,8 @@ export class InputComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  onKeyup(input: HTMLInputElement): void {
-    const value = parseInt(input.value);
+  onKeyup(inputEl: HTMLInputElement): void {
+    const value = parseInt(inputEl.value);
     this.propagateChange(value);
     this.changed.emit(value);
   }
