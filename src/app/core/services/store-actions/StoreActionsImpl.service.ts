@@ -1,7 +1,6 @@
-import { Flavour } from '@app/core/model/Flavour';
 import { Injectable } from '@angular/core';
 import { StoreActionsService } from './StoreActions.service';
-import { StoreConfigService } from '@app/core/services/store-config/store-config.service';
+import { StoreConfigService } from '../store-config/StoreConfig.service';
 import { VendingStore } from '@app/core/store/VendingStore.service';
 
 @Injectable()
