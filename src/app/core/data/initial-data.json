@@ -1,0 +1,42 @@
+[
+  {
+    "name": "pimx",
+    "price": 2.0
+  },
+  {
+    "name": "mayy",
+    "price": 1.5
+  },
+  {
+    "name": "agua",
+    "price": 0.5
+  },
+  {
+    "name": "leau",
+    "price": 3.5
+  },
+  {
+    "name": "voda",
+    "price": 3.0
+  },
+  {
+    "name": "vand",
+    "price": 1.0
+  },
+  {
+    "name": "amazi",
+    "price": 4.5
+  },
+  {
+    "name": "mavua",
+    "price": 5.0
+  },
+  {
+    "name": "metsi",
+    "price": 2.5
+  },
+  {
+    "name": "vatten",
+    "price": 2.0
+  }
+]

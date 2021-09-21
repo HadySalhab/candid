@@ -1,11 +1,11 @@
+import { Injectable } from '@angular/core';
 import { StoreState } from '../model/StoreState';
 import { VendingStore } from './VendingStore';
 
+@Injectable()
 export class VendingStoreImpl extends VendingStore {
-  getMessage(): string {
-    return 'hello';
-  }
-  updateState(newState: StoreState): void {
-    this.setState(newState);
+  updateState(newState: StoreState, action: string): void {
+    this.setState(newState, action);
+    console.log(this.stateHistory);
   }
 }
