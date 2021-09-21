@@ -1,0 +1,4 @@
+<select #select [value]="value" [disabled]="isDisabled" (change)="onChanged(select)" (blur)="onBlur()"
+  class="custom-select">
+  <option *ngFor="let item of items" [value]="item.value">{{ item.label }}</option>
+</select>
