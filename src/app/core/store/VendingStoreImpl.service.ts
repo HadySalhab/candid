@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StoreState } from '../model/StoreState';
-import { VendingStore } from './VendingStore';
+import { VendingStore } from './VendingStore.service';
 
 @Injectable()
 export class VendingStoreImpl extends VendingStore {

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { StoreActionsService } from './StoreActions.service';
 import { StoreState } from '@app/core/model/StoreState';
 import { VendingItem } from '@app/core/model/VendingItem';
-import { VendingStore } from '@app/core/store/VendingStore';
+import { VendingStore } from '@app/core/store/VendingStore.service';
 import initialData from '@app/core/data/initial-data.json';
 
 @Injectable()

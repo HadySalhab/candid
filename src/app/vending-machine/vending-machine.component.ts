@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
 import { StoreState } from '@app/core/model/StoreState';
 import { Summary } from './summary-screen/summary.model';
-import { VendingStore } from '@app/core/store/VendingStore';
+import { VendingStore } from '@app/core/store/VendingStore.service';
 
 @Component({
   selector: 'app-vending-machine',
