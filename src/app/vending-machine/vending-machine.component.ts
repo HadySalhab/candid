@@ -2,10 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, share } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
+import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
 import { StoreState } from '@app/core/model/StoreState';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { Summary } from './summary-screen/summary.model';
-import { VendingService } from '@app/core/services/vending.service';
 import { VendingStore } from '@app/core/store/VendingStore';
 
 @Component({
@@ -15,7 +14,10 @@ import { VendingStore } from '@app/core/store/VendingStore';
 export class VendingMachineComponent implements OnInit {
   summary$: Observable<Summary>;
   storeState$: Observable<StoreState>;
-  constructor(private vs: VendingService, private store: VendingStore) {}
+  constructor(
+    private storeActions: StoreActionsService,
+    private store: VendingStore
+  ) {}
 
   ngOnInit(): void {
     this.storeState$ = this.store.stateChanged.pipe(share());

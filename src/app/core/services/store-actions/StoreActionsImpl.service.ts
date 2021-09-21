@@ -1,13 +1,13 @@
-import { Flavour } from '../model/Flavour';
+import { Flavour } from '@app/core/model/Flavour';
 import { Injectable } from '@angular/core';
-import { StoreState } from '../model/StoreState';
-import { VendingItem } from '../model/VendingItem';
-import { VendingService } from './vending.service';
-import { VendingStore } from '../store/VendingStore';
-import initialData from '../data/initial-data.json';
+import { StoreActionsService } from './StoreActions.service';
+import { StoreState } from '@app/core/model/StoreState';
+import { VendingItem } from '@app/core/model/VendingItem';
+import { VendingStore } from '@app/core/store/VendingStore';
+import initialData from '@app/core/data/initial-data.json';
 
 @Injectable()
-export class VendingImplService extends VendingService {
+export class StoreActionsImplService extends StoreActionsService {
   private readonly INITIAL_QUANTITY_PER_ITEM = 10;
   private readonly INITIAL_SELECTED_ITEM = null;
   private readonly INITIAL_CANS_SOLD = 0;

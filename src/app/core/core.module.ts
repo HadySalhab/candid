@@ -2,9 +2,9 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { VendingStore } from './store/VendingStore';
-import { VendingImplService } from './services/vendingimpl.service';
 import { VendingStoreImpl } from './store/VendingStoreImpl';
-import { VendingService } from './services/vending.service';
+import { StoreActionsService } from './services/store-actions/StoreActions.service';
+import { StoreActionsImplService } from './services/store-actions/StoreActionsImpl.service';
 
 @NgModule({
   declarations: [],
@@ -16,8 +16,8 @@ import { VendingService } from './services/vending.service';
       useClass: VendingStoreImpl,
     },
     {
-      provide: VendingService,
-      useClass: VendingImplService,
+      provide: StoreActionsService,
+      useClass: StoreActionsImplService,
     },
   ],
 })
