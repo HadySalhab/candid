@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { VendingService } from './core/services/vending.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,5 @@ import { VendingService } from './core/services/vending.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private vendingService: VendingService) {}
-  title = 'candid';
+  constructor() {}
 }

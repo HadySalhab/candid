@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
+import { VendingMachineModule } from './vending-machine/vending-machine.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule, // Singleton objects (services, components that are loaded only once, etc.)
-    SharedModule, // Shared (multi-instance) objects
+    SharedModule, // Shared (multi-instance) objects,
+    VendingMachineModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

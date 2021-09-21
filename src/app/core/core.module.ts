@@ -1,15 +1,14 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { VendingStore } from './store/VendingStore';
-import { VendingService } from './services/vending.service';
 import { VendingImplService } from './services/vendingimpl.service';
 import { VendingStoreImpl } from './store/VendingStoreImpl';
+import { VendingService } from './services/vending.service';
 
 @NgModule({
-  declarations: [ToolbarComponent],
-  exports: [ToolbarComponent],
+  declarations: [],
+  exports: [],
   imports: [CommonModule],
   providers: [
     {
