@@ -8,7 +8,7 @@
       [selectedItem]="selectedItem$ | async">
     </app-vending-button-list>
     <div class="px-3 py-3">
-      <app-checkout></app-checkout>
+      <app-checkout [isDisabled]="!(isItemSelected | async)" (onCheckout)="handleCheckout($event)"></app-checkout>
     </div>
   </div>
 </main>
