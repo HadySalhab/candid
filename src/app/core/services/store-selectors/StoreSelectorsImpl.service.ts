@@ -35,4 +35,7 @@ export class StoreSelectorsImplService extends StoreSelectorsService {
       })
     );
   }
+  getState(): StoreState {
+    return this.store.getCurrentState();
+  }
 }

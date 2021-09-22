@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnInit,
+  Output,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -13,7 +15,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent implements OnInit {
+  @Output()
+  onRestock = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+  handleRestock() {
+    this.onRestock.emit();
+  }
 }

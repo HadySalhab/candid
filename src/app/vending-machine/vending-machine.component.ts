@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, share, shareReplay, take, tap } from 'rxjs/operators';
 
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { PaymentsType } from '@app/core/model/PaymentsType';
+import { RestockComponent } from './restock/restock.component';
 import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
+import { StoreConfigService } from '@app/core/services/store-config/StoreConfig.service';
 import { StoreSelectorsService } from '@app/core/services/store-selectors/StoreSelectors.service';
 import { StoreState } from '@app/core/model/StoreState';
 import { Summary } from './summary-screen/summary.model';
@@ -19,7 +22,9 @@ export class VendingMachineComponent implements OnInit {
   selectedItem$: Observable<VendingItem>;
   constructor(
     private storeActions: StoreActionsService,
-    private storeSelectors: StoreSelectorsService
+    private storeSelectors: StoreSelectorsService,
+    private storeConfig: StoreConfigService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit(): void {
@@ -47,6 +52,19 @@ export class VendingMachineComponent implements OnInit {
   }
   handleSelection(vendingItem: VendingItem) {
     this.storeActions.updateSelectedItem(vendingItem);
+  }
+  handleRestock() {
+    const initialState = {
+      storeState: this.storeSelectors.getState(),
+      totalCapacity: this.storeConfig.TOTAL_CAPACITY,
+      totalCansAvailable: this.storeSelectors.getTotalNumberOfAvailableCans(),
+    };
+    const bsModalRef = this.modalService.show(RestockComponent, {
+      initialState,
+    });
+    bsModalRef.content.onRestock.subscribe((data) => {
+      this.storeActions.handleRestock(data);
+    });
   }
   get isItemSelected(): Observable<boolean> {
     return this.selectedItem$.pipe(map((item) => item !== null));
