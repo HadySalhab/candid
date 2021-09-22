@@ -7,7 +7,10 @@
     <app-vending-button-list (onSelection)="handleSelection($event)" [items]="vendingItems$ | async"
       [selectedItem]="selectedItem$ | async">
     </app-vending-button-list>
-    <div class="px-3 py-3">
+    <div class="p-3">
+      <app-selection-screen [selectedItem]="selectedItem$ | async"></app-selection-screen>
+    </div>
+    <div class="p-3">
       <app-checkout [isDisabled]="!(isItemSelected | async)" (onCheckout)="handleCheckout($event)"></app-checkout>
     </div>
   </div>
