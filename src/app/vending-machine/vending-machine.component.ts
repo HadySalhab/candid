@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, share, shareReplay, tap } from 'rxjs/operators';
+import { map, share, shareReplay, take, tap } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
@@ -15,13 +15,16 @@ import { VendingItem } from '@app/core/model/VendingItem';
 export class VendingMachineComponent implements OnInit {
   summary$: Observable<Summary>;
   vendingItems$: Observable<VendingItem[]>;
+  selectedItem$: Observable<VendingItem>;
   constructor(
     private storeActions: StoreActionsService,
     private storeSelectors: StoreSelectorsService
   ) {}
 
   ngOnInit(): void {
-    this.vendingItems$ = this.storeSelectors.getVendingItemsChange();
+    this.vendingItems$ = this.storeSelectors
+      .getVendingItemsChange()
+      .pipe(share());
     this.summary$ = this.storeSelectors.getFullStateChange().pipe(
       map((state) => {
         return {
@@ -31,7 +34,15 @@ export class VendingMachineComponent implements OnInit {
           totalCansAvailable:
             this.storeSelectors.getTotalNumberOfAvailableCans(),
         };
-      })
+      }),
+      share()
     );
+    this.selectedItem$ = this.storeSelectors
+      .getSelectedItemChange()
+      .pipe(share());
+  }
+
+  handleSelection(vendingItem: VendingItem) {
+    this.storeActions.updateSelectedItem(vendingItem);
   }
 }

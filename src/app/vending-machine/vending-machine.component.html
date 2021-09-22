@@ -4,6 +4,8 @@
 <main>
   <app-summary-screen [summary]="summary$ | async"></app-summary-screen>
   <div>
-    <app-vending-button-list [items]="vendingItems$ | async"></app-vending-button-list>
+    <app-vending-button-list (onSelection)="handleSelection($event)" [items]="vendingItems$ | async"
+      [selectedItem]="selectedItem$ | async">
+    </app-vending-button-list>
   </div>
 </main>
