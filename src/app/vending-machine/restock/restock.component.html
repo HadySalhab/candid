@@ -1,5 +1,6 @@
 <h2>Restock Options:</h2>
-<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<button type="button" class="close" aria-label="Close" (click)="handleClose()"><span
+    aria-hidden="true">&times;</span></button>
 <p>Total Remaining Capacity: <span
     [ngClass]="{ 'text-success': remainingCapacity >= 5, 'text-danger': remainingCapacity <= 0}">
     {{ remainingCapacity }}

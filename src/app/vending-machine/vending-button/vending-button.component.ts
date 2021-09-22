@@ -31,4 +31,7 @@ export class VendingButtonComponent implements OnInit {
   handleSelection() {
     this.onSelection.emit(this.vendingItem);
   }
+  get isAvailable() {
+    return this.vendingItem.quantity > 0;
+  }
 }

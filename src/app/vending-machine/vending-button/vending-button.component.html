@@ -1,4 +1,5 @@
-<button class="vending-button" [ngClass]="{'selected':isSelected}" (click)="handleSelection()">
+<button [disabled]="!isAvailable" class="vending-button" [ngClass]="{'selected':isSelected}"
+  (click)="handleSelection()">
   <small class="vending-button__quantity">{{ vendingItem.quantity }}</small>
   <small class="vending-button__flavour">{{ vendingItem.flavour.name }}</small>
   <small class="vending-button__price">{{ vendingItem.flavour.price | currency }}</small>

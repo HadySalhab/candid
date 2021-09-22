@@ -44,6 +44,9 @@ export class RestockComponent implements OnInit {
     this.onRestock.emit(this.form.value);
     this.bsModalRef.hide();
   }
+  handleClose() {
+    this.bsModalRef.hide();
+  }
   private createFormGroupFromVendingItemsAndReturn() {
     const group = {};
     const items = this.storeState.vendingItems;
