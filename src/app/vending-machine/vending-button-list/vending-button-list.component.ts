@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   Output,
+  ViewEncapsulation,
 } from '@angular/core';
 
 import { VendingItem } from '@app/core/model/VendingItem';
@@ -13,6 +14,7 @@ import { VendingItem } from '@app/core/model/VendingItem';
   selector: 'app-vending-button-list',
   templateUrl: './vending-button-list.component.html',
   styleUrls: ['./vending-button-list.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VendingButtonListComponent implements OnInit {

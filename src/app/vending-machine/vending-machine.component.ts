@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { map, share, shareReplay, take, tap } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
+import { PaymentsType } from '@app/core/model/PaymentsType';
 import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
 import { StoreSelectorsService } from '@app/core/services/store-selectors/StoreSelectors.service';
 import { StoreState } from '@app/core/model/StoreState';
@@ -35,14 +36,19 @@ export class VendingMachineComponent implements OnInit {
             this.storeSelectors.getTotalNumberOfAvailableCans(),
         };
       }),
-      share()
+      shareReplay()
     );
     this.selectedItem$ = this.storeSelectors
       .getSelectedItemChange()
-      .pipe(share());
+      .pipe(shareReplay());
   }
-
+  handleCheckout(paymentType: PaymentsType) {
+    this.storeActions.handleCheckout(paymentType);
+  }
   handleSelection(vendingItem: VendingItem) {
     this.storeActions.updateSelectedItem(vendingItem);
+  }
+  get isItemSelected(): Observable<boolean> {
+    return this.selectedItem$.pipe(map((item) => item !== null));
   }
 }

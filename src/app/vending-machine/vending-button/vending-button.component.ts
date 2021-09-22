@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { VendingItem } from '@app/core/model/VendingItem';
 
@@ -6,6 +14,8 @@ import { VendingItem } from '@app/core/model/VendingItem';
   selector: 'app-vending-button',
   templateUrl: './vending-button.component.html',
   styleUrls: ['./vending-button.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VendingButtonComponent implements OnInit {
   @Input()

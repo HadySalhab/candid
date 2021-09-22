@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="handleCheckout($event);">
+  <div class="form-group">
+    <label for="payment-type-selection">Please select your payment type:</label>
+    <app-select id="payment-type-selection" formControlName="payment" [items]="items"></app-select>
+  </div>
+  <button [disabled]="isDisabled" class="btn btn-primary w-100" type="submit">Checkout</button>
+</form>
