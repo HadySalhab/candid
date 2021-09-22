@@ -1,1 +1,7 @@
-<p>checkout works!</p>
+<form>
+  <div [formGroup]="form" class="form-group">
+    <label for="formGroupExampleInput">Example label</label>
+    <app-select formControlName="payment" [items]="items"></app-select>
+  </div>
+  <button class="btn btn-primary w-100" type="submit">Checkout</button>
+</form>

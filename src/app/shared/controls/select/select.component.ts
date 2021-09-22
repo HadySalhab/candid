@@ -54,12 +54,17 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   onChanged(selectEl: HTMLSelectElement): void {
     const value = selectEl.value ? selectEl.value : null;
+    this.value = value;
     this.propagateChange(value);
     this.changed.emit(value);
   }
 
   onBlur(): void {
     this.propagateTouched();
+  }
+
+  byValue(index: number, item: ControlItem) {
+    return item.value;
   }
 
   ngOnInit(): void {}
