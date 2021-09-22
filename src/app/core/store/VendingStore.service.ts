@@ -8,4 +8,5 @@ export abstract class VendingStore extends ObservableStore<StoreState> {
   }
   abstract updateState(newState: StoreState, action: string): void;
   abstract getStateChange(): Observable<StoreState>;
+  abstract getCurrentState(): StoreState;
 }

@@ -3,10 +3,10 @@ import { map, share, shareReplay, tap } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
+import { StoreSelectorsService } from '@app/core/services/store-selectors/StoreSelectors.service';
 import { StoreState } from '@app/core/model/StoreState';
 import { Summary } from './summary-screen/summary.model';
 import { VendingItem } from '@app/core/model/VendingItem';
-import { VendingStore } from '@app/core/store/VendingStore.service';
 
 @Component({
   selector: 'app-vending-machine',
@@ -15,28 +15,21 @@ import { VendingStore } from '@app/core/store/VendingStore.service';
 export class VendingMachineComponent implements OnInit {
   summary$: Observable<Summary>;
   vendingItems$: Observable<VendingItem[]>;
-  storeState$: Observable<StoreState>;
   constructor(
     private storeActions: StoreActionsService,
-    private store: VendingStore
+    private storeSelectors: StoreSelectorsService
   ) {}
 
   ngOnInit(): void {
-    this.storeState$ = this.store.stateChanged.pipe(shareReplay());
-    this.vendingItems$ = this.storeState$.pipe(
-      map((state) => {
-        return [...state.vendingItems];
-      })
-    );
-    this.summary$ = this.storeState$.pipe(
+    this.vendingItems$ = this.storeSelectors.getVendingItemsChange();
+    this.summary$ = this.storeSelectors.getFullStateChange().pipe(
       map((state) => {
         return {
           totalCansSold: state.totalCansSold,
           totalCashAmount: state.totalCashAmount,
           totalCreditCardAmount: state.totalCreditCardAmount,
-          totalCansAvailable: state.vendingItems
-            .map((item) => item.quantity)
-            .reduce((prev, curr) => prev + curr),
+          totalCansAvailable:
+            this.storeSelectors.getTotalNumberOfAvailableCans(),
         };
       })
     );

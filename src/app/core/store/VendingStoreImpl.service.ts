@@ -8,6 +8,9 @@ export class VendingStoreImpl extends VendingStore {
   getStateChange(): Observable<StoreState> {
     return this.stateChanged;
   }
+  getCurrentState(): StoreState {
+    return this.getState();
+  }
   updateState(newState: StoreState, action: string): void {
     this.setState(newState, action);
     console.log(this.stateHistory);
