@@ -5,6 +5,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { VendingMachineComponent } from './vending-machine.component';
 import { VendingButtonComponent } from './vending-button/vending-button.component';
 import { VendingButtonListComponent } from './vending-button-list/vending-button-list.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { VendingButtonListComponent } from './vending-button-list/vending-button
     SummaryScreenComponent,
     VendingButtonComponent,
     VendingButtonListComponent,
+    CheckoutComponent,
   ],
   imports: [CommonModule],
   exports: [VendingMachineComponent],
