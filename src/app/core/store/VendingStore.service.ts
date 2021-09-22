@@ -6,7 +6,7 @@ export abstract class VendingStore extends ObservableStore<StoreState> {
   constructor() {
     super({ trackStateHistory: true, logStateChanges: true });
   }
-  abstract updateState(newState: StoreState, action: string): void;
+  abstract updateState(newState: Partial<StoreState>, action: string): void;
   abstract getStateChange(): Observable<StoreState>;
   abstract getCurrentState(): StoreState;
 }

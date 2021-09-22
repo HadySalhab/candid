@@ -1,5 +1,14 @@
 <div class="vending-button-list container px-0">
-  <ng-container *ngFor="let item of items; let i=index;">
-    <app-vending-button></app-vending-button>
-  </ng-container>
+  <div class="row no-gutters" *ngFor="let item of items; let i=index; let even = even;">
+    <ng-container *ngIf="even">
+      <div class="col-6">
+        <app-vending-button [isSelected]="selectedItem && selectedItem.flavour.name == items[i].flavour.name"
+          (onSelection)="handleSelection($event)" [vendingItem]="items[i]"></app-vending-button>
+      </div>
+      <div class="col-6">
+        <app-vending-button [isSelected]="selectedItem && selectedItem.flavour.name == items[i+1].flavour.name"
+          (onSelection)="handleSelection($event)" [vendingItem]="items[i+1]"></app-vending-button>
+      </div>
+    </ng-container>
+  </div>
 </div>

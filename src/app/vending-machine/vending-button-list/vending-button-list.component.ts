@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 
 import { VendingItem } from '@app/core/model/VendingItem';
@@ -15,7 +17,13 @@ import { VendingItem } from '@app/core/model/VendingItem';
 })
 export class VendingButtonListComponent implements OnInit {
   @Input() items: VendingItem[];
+  @Input() selectedItem: VendingItem;
+  @Output() onSelection: EventEmitter<VendingItem> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleSelection(vendingItem: VendingItem) {
+    this.onSelection.emit(vendingItem);
+  }
 }

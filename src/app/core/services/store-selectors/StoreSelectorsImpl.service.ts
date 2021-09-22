@@ -22,9 +22,16 @@ export class StoreSelectorsImplService extends StoreSelectorsService {
     return this.store.getStateChange();
   }
   getVendingItemsChange(): Observable<VendingItem[]> {
-    return this.store.getStateChange().pipe(
+    return this.getFullStateChange().pipe(
       map((state) => {
         return state.vendingItems;
+      })
+    );
+  }
+  getSelectedItemChange(): Observable<VendingItem> {
+    return this.getFullStateChange().pipe(
+      map((state) => {
+        return state.selectedItem;
       })
     );
   }

@@ -11,7 +11,7 @@ export class VendingStoreImpl extends VendingStore {
   getCurrentState(): StoreState {
     return this.getState();
   }
-  updateState(newState: StoreState, action: string): void {
+  updateState(newState: Partial<StoreState>, action: string): void {
     this.setState(newState, action);
     console.log(this.stateHistory);
   }

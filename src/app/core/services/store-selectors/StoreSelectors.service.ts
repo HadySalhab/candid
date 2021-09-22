@@ -8,4 +8,5 @@ export abstract class StoreSelectorsService {
   abstract getVendingItemsChange(): Observable<VendingItem[]>;
   abstract getFullStateChange(): Observable<StoreState>;
   abstract getTotalNumberOfAvailableCans(): number;
+  abstract getSelectedItemChange(): Observable<VendingItem>;
 }
