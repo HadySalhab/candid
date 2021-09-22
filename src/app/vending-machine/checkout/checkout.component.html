@@ -1,7 +1,7 @@
 <form>
   <div [formGroup]="form" class="form-group">
-    <label for="formGroupExampleInput">Example label</label>
-    <app-select formControlName="payment" [items]="items"></app-select>
+    <label for="payment-type-selection">Please select your payment type:</label>
+    <app-select id="payment-type-selection" formControlName="payment" [items]="items"></app-select>
   </div>
   <button class="btn btn-primary w-100" type="submit">Checkout</button>
 </form>

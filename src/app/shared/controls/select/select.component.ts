@@ -28,6 +28,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   constructor() {}
 
   @Input() items: ControlItem[] = [];
+  @Input() id: string;
   @Output() changed = new EventEmitter<Value>();
 
   value?: Value;
