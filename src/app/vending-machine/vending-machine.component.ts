@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { map, share } from 'rxjs/operators';
+import { map, share, shareReplay, tap } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
+import { StoreActionsService } from '@app/core/services/store-actions/StoreActions.service';
+import { StoreSelectorsService } from '@app/core/services/store-selectors/StoreSelectors.service';
 import { StoreState } from '@app/core/model/StoreState';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { Summary } from './summary-screen/summary.model';
-import { VendingService } from '@app/core/services/vending.service';
-import { VendingStore } from '@app/core/store/VendingStore';
+import { VendingItem } from '@app/core/model/VendingItem';
 
 @Component({
   selector: 'app-vending-machine',
@@ -14,20 +14,22 @@ import { VendingStore } from '@app/core/store/VendingStore';
 })
 export class VendingMachineComponent implements OnInit {
   summary$: Observable<Summary>;
-  storeState$: Observable<StoreState>;
-  constructor(private vs: VendingService, private store: VendingStore) {}
+  vendingItems$: Observable<VendingItem[]>;
+  constructor(
+    private storeActions: StoreActionsService,
+    private storeSelectors: StoreSelectorsService
+  ) {}
 
   ngOnInit(): void {
-    this.storeState$ = this.store.stateChanged.pipe(share());
-    this.summary$ = this.storeState$.pipe(
+    this.vendingItems$ = this.storeSelectors.getVendingItemsChange();
+    this.summary$ = this.storeSelectors.getFullStateChange().pipe(
       map((state) => {
         return {
           totalCansSold: state.totalCansSold,
           totalCashAmount: state.totalCashAmount,
           totalCreditCardAmount: state.totalCreditCardAmount,
-          totalCansAvailable: state.vendingItems
-            .map((item) => item.quantity)
-            .reduce((prev, curr) => prev + curr),
+          totalCansAvailable:
+            this.storeSelectors.getTotalNumberOfAvailableCans(),
         };
       })
     );

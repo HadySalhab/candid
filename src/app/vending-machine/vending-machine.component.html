@@ -3,4 +3,7 @@
 </div>
 <main>
   <app-summary-screen [summary]="summary$ | async"></app-summary-screen>
+  <div>
+    <app-vending-button-list [items]="vendingItems$ | async"></app-vending-button-list>
+  </div>
 </main>
