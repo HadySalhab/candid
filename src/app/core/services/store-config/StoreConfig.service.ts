@@ -38,6 +38,10 @@ export class StoreConfigService {
     };
   }
 
+  get TOTAL_CAPACITY(): number {
+    return 100;
+  }
+
   private mapFlavoursToVendingItems(flavours: Flavour[]): VendingItem[] {
     return flavours.map((fl) => ({
       flavour: fl,

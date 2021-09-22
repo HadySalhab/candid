@@ -1,0 +1,33 @@
+<h2>Restock Options:</h2>
+<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<p>Total Remaining Capacity: <span
+    [ngClass]="{ 'text-success': remainingCapacity >= 5, 'text-danger': remainingCapacity <= 0}">
+    {{ remainingCapacity }}
+  </span></p>
+<form [formGroup]="form" (ngSubmit)="handleRestock()">
+  <div class="row text-center">
+    <div class="col-3">
+      Flavour
+    </div>
+    <div class="col-3">
+      Restock
+    </div>
+    <div class="col-3">
+      Current Stock
+    </div>
+    <div class="col-3">
+      Total
+    </div>
+  </div>
+  <div class="row" *ngFor="let item of storeState.vendingItems">
+    <div class="col-3 text-center">{{ item.flavour.name }}</div>
+    <div class="col-3 text-center">
+      <app-input [formControlName]="item.flavour.name"></app-input>
+    </div>
+    <div class="col-3 text-center">{{ item.quantity }}</div>
+    <div class="col-3 text-center">
+      {{ (form.controls[item.flavour.name].value || 0) + item.quantity}}
+    </div>
+  </div>
+  <button [disabled]="!isValid" class="w-100 btn btn-outline-primary" type="submit">Restock</button>
+</form>

@@ -3,10 +3,10 @@
     <h2 class="summary-screen__title">Summary</h2>
     <ul class="summary-screen__list">
       <li>Total number of cans available: {{ summary.totalCansAvailable }}</li>
-      <li>Total cash amount(USD): {{ summary.totalCashAmount | currency:'USD':'symbol':'1.1'}}</li>
-      <li>Total credit-card amount(USD): {{ summary.totalCreditCardAmount |
-        currency:'USD':'symbol':'1.1'}}</li>
-      <li>Total amount of cans sold: {{ summary.totalCansSold }}</li>
+      <li>Total cash amount: {{ summary.totalCashAmount | currency:'USD':'symbol':'1.2'}}</li>
+      <li>Total credit-card amount: {{ summary.totalCreditCardAmount |
+        currency:'USD':'symbol':'1.2'}}</li>
+      <li>Total number of cans sold: {{ summary.totalCansSold }}</li>
     </ul>
   </div>
 </ng-container>

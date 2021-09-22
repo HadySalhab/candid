@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PaymentsType } from '@app/core/model/PaymentsType';
+import { RestockData } from '@app/vending-machine/restock/restock-data.model';
 import { StoreActionsService } from './StoreActions.service';
 import { StoreConfigService } from '../store-config/StoreConfig.service';
 import { StoreState } from '@app/core/model/StoreState';
@@ -26,20 +27,39 @@ export class StoreActionsImplService extends StoreActionsService {
   }
   public handleCheckout(paymentType: PaymentsType): void {
     const state = this.store.getCurrentState();
-    this.increaseCansSold(state);
-    this.decreaseFlavourSold(state);
+    this.increaseNumberOfCansSold(state);
+    this.decreaseCanSold(state);
     this.handlePaymentIncrease(state, paymentType);
     this.resetSelectedItem(state);
     this.store.updateState(state, VendingActions.CHECKOUT);
   }
-
+  public handleRestock(restockData: RestockData): void {
+    const state = this.store.getCurrentState();
+    this.restockCans(state, restockData);
+    this.resetTotalCansSold(state);
+    this.withdrawMoney(state);
+    this.store.updateState(state, VendingActions.RESTOCK);
+  }
+  private restockCans(state: StoreState, restockData: RestockData) {
+    for (let key in restockData) {
+      const item = state.vendingItems.find((vi) => vi.flavour.name === key);
+      item.quantity += restockData[key];
+    }
+  }
+  private resetTotalCansSold(state: StoreState) {
+    state.totalCansSold = 0;
+  }
+  private withdrawMoney(state: StoreState) {
+    state.totalCreditCardAmount = 0;
+    state.totalCashAmount = 0;
+  }
   private resetSelectedItem(state: StoreState) {
     state.selectedItem = null;
   }
-  private increaseCansSold(state: StoreState) {
+  private increaseNumberOfCansSold(state: StoreState) {
     state.totalCansSold++;
   }
-  private decreaseFlavourSold(state: StoreState) {
+  private decreaseCanSold(state: StoreState) {
     state.vendingItems = state.vendingItems.map((item) => {
       if (item.flavour.name === state.selectedItem.flavour.name) {
         return {
@@ -66,4 +86,5 @@ export enum VendingActions {
   INITIALIZE = 'APP_INITIALIZE',
   SELECT_ITEM = 'SELECT_ITEM',
   CHECKOUT = 'CHECKOUT',
+  RESTOCK = 'RESTOCK',
 }
