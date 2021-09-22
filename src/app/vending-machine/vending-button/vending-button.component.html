@@ -1,5 +1,5 @@
 <button class="vending-button">
-  <small class="vending-button__quantity">10</small>
-  <small class="vending-button__flavour">Pepsi</small>
-  <small class="vending-button__price">$2.50</small>
+  <small class="vending-button__quantity">{{ vendingItem.quantity }}</small>
+  <small class="vending-button__flavour">{{ vendingItem.flavour.name }}</small>
+  <small class="vending-button__price">{{ vendingItem.flavour.price | currency }}</small>
 </button>
