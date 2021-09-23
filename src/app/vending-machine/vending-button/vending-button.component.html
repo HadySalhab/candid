@@ -1,6 +1,7 @@
 <button [disabled]="!isAvailable" class="vending-button" [ngClass]="{'selected':isSelected}"
   (click)="handleSelection()">
-  <small class="vending-button__quantity">{{ vendingItem.quantity }}</small>
+  <small class="vending-button__quantity" [ngClass]="{'text-danger': vendingItem.quantity <= 3}">{{ vendingItem.quantity
+    }}</small>
   <span class="vending-button__flavour">{{ vendingItem.flavour.name | titlecase }}</span>
   <small class="vending-button__price">{{ vendingItem.flavour.price | currency }}</small>
 </button>
