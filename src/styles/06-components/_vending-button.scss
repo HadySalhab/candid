@@ -10,10 +10,10 @@
   overflow: hidden;
   &.selected,
   &:hover {
-    background-color: rgba(#bd1340, 0.2);
+    background-color: $accent;
   }
   &:active {
-    background-color: #ddebff;
+    background-color: rgba($danger, 0.2);
     transform: translateY(2px);
   }
   &__price {
