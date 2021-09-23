@@ -1,11 +1,11 @@
 <div class="vending-button-list container px-0">
-  <div class="row no-gutters" *ngFor="let item of items; let i=index; let even = even;">
+  <div class="row no-gutters" *ngFor="let item of items; let i=index; let even = even;" [ngClass]="{'pt-1': i == 0}">
     <ng-container *ngIf="even">
-      <div class="col-6">
+      <div class="col-6 pl-3 pr-2 py-2">
         <app-vending-button [isSelected]="selectedItem && selectedItem.flavour.name == items[i].flavour.name"
           (onSelection)="handleSelection($event)" [vendingItem]="items[i]"></app-vending-button>
       </div>
-      <div class="col-6">
+      <div class="col-6 pl-2 pr-3 py-2">
         <app-vending-button [isSelected]="selectedItem && selectedItem.flavour.name == items[i+1].flavour.name"
           (onSelection)="handleSelection($event)" [vendingItem]="items[i+1]"></app-vending-button>
       </div>

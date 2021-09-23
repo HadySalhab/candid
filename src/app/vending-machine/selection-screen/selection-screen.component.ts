@@ -11,7 +11,6 @@ import { VendingItem } from '@app/core/model/VendingItem';
 @Component({
   selector: 'app-selection-screen',
   templateUrl: './selection-screen.component.html',
-  styleUrls: ['./selection-screen.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap");
 /**
  * ITCSS - Bootstrap
  *
@@ -16,6 +17,7 @@
 
 // 2. Include any default variable overrides here
 @import "./01-settings/colors";
+@import "./01-settings/typography";
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
@@ -34,8 +36,10 @@
 @import "./03-generic/normalize";
 @import "./04-elements/all";
 @import "./04-elements/html";
+@import "./04-elements/body";
 @import "./05-objects/container";
 @import "./06-components/toolbar";
 @import "./06-components/summary-screen";
 @import "./06-components/vending-button";
 @import "./06-components/vending-button-list";
+@import "./06-components/selection-screen";

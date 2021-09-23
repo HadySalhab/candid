@@ -1,5 +1,7 @@
-<div *ngIf="!selectedItem">Please pick a can to checkout</div>
-<div *ngIf="selectedItem">
-  <small>{{ selectedItem.flavour.name }}</small>
-  <small>{{ selectedItem.flavour.price }}</small>
+<div class="selection-screen">
+  <div *ngIf="!selectedItem">Please pick a can to checkout</div>
+  <div *ngIf="selectedItem" class="d-flex justify-content-between">
+    <span>{{ selectedItem.flavour.name | titlecase }}</span>
+    <span>{{ selectedItem.flavour.price | currency:'USD':'symbol':'1.2' }}</span>
+  </div>
 </div>
