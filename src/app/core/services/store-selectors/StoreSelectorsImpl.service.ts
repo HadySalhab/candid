@@ -7,6 +7,9 @@ import { StoreState } from '@app/core/model/StoreState';
 import { VendingItem } from '@app/core/model/VendingItem';
 import { VendingStore } from '@app/core/store/VendingStore.service';
 
+/*
+  Service that exposes various store selectors to be consumed by the client (VendingMachineComponent)
+*/
 @Injectable()
 export class StoreSelectorsImplService extends StoreSelectorsService {
   constructor(store: VendingStore) {

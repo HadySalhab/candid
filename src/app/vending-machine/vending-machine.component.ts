@@ -12,6 +12,9 @@ import { StoreState } from '@app/core/model/StoreState';
 import { Summary } from './summary-screen/summary.model';
 import { VendingItem } from '@app/core/model/VendingItem';
 
+/*
+  Controllers: handles user events, fire store actions and listens to store state updates.
+*/
 @Component({
   selector: 'app-vending-machine',
   templateUrl: './vending-machine.component.html',

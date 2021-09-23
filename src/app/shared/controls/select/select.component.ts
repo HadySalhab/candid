@@ -11,6 +11,9 @@ import {
 import { ControlItem, Value } from '../control-item.model';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/*
+  Custom select component used for checkout payment types option
+*/
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',

@@ -10,6 +10,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+/*
+  Custom input number type used for restocking
+*/
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',

@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { StoreState } from '@app/core/model/StoreState';
 import { VendingItem } from '@app/core/model/VendingItem';
 import initialData from '@app/core/data/initial-data.json';
+
+/*
+  Service that holds all business rules for the vending machine
+*/
 @Injectable({
   providedIn: 'root',
 })

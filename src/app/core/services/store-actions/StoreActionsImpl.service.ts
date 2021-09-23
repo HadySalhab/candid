@@ -7,6 +7,9 @@ import { StoreState } from '@app/core/model/StoreState';
 import { VendingItem } from '@app/core/model/VendingItem';
 import { VendingStore } from '@app/core/store/VendingStore.service';
 
+/*
+  Service that holds all actions required to update the Store state.
+*/
 @Injectable()
 export class StoreActionsImplService extends StoreActionsService {
   constructor(store: VendingStore, private storeConfig: StoreConfigService) {
