@@ -1,17 +1,23 @@
-<div class="container">
-  <app-toolbar (onRestock)="handleRestock()"></app-toolbar>
-</div>
-<main>
-  <app-summary-screen [summary]="summary$ | async"></app-summary-screen>
-  <div>
-    <app-vending-button-list (onSelection)="handleSelection($event)" [items]="vendingItems$ | async"
-      [selectedItem]="selectedItem$ | async">
-    </app-vending-button-list>
-    <div class="px-3 py-2">
-      <app-selection-screen [selectedItem]="selectedItem$ | async"></app-selection-screen>
-    </div>
-    <div class="px-3 py-2">
-      <app-checkout [isDisabled]="!(isItemSelected | async)" (onCheckout)="handleCheckout($event)"></app-checkout>
-    </div>
+<div class="vending-machine my-lg-5">
+  <div class="container">
+    <app-toolbar (onRestock)="handleRestock()"></app-toolbar>
   </div>
-</main>
+  <main class="container px-0">
+    <app-summary-screen [summary]="summary$ | async"></app-summary-screen>
+    <div class="row no-gutters">
+      <div class="col-12 col-lg-6 pb-lg-3">
+        <app-vending-button-list (onSelection)="handleSelection($event)" [items]="vendingItems$ | async"
+          [selectedItem]="selectedItem$ | async">
+        </app-vending-button-list>
+      </div>
+      <div class="col-12 col-lg-6 pt-lg-1">
+        <div class="px-3 py-2">
+          <app-selection-screen [selectedItem]="selectedItem$ | async"></app-selection-screen>
+        </div>
+        <div class="px-3 py-2">
+          <app-checkout [isDisabled]="!(isItemSelected | async)" (onCheckout)="handleCheckout($event)"></app-checkout>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
