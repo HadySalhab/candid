@@ -1,0 +1,27 @@
+# Candid Specs
+
+## Assumptions: 
+
+- Flavour name is unique and serves as a unique identifier
+- Maximum capactity that can be held in the vending machine is 100
+- Cans can only be added when restocking
+- No limitations for the number of cans per flavour
+
+## Modules:
+
+Candid application contains 3 modules: 
+
+- Shared: includes multi-instances objects: utilities,validators, custom widgets, custom controls, etc.
+- Core: includes single-instance objects (Singleton): store, store actions, store selectors, etc.
+- VendingMachine: the main feature of the application.
+
+## Architectural Pattern:
+
+Candid follow redux-like pattern with the help of [ObservableStore](https://github.com/DanWahlin/Observable-Store) 
+
+VendingMachineComponent serves as a controller that connects all user interactions from the UI components to the store using the StoreActions and StoreSelectors services.
+
+## SCSS/CSS.
+
+Most of the styling are made with bootstrap with some custom styling following the [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
+folder structure.
