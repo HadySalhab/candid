@@ -23,10 +23,11 @@
         Total
       </div>
     </div>
-    <div class="row restock__data" *ngFor="let item of storeState.vendingItems">
+    <div class="row restock__data" *ngFor="let item of storeState.vendingItems; trackBy:byName">
       <div class="col-3 text-left">{{ item.flavour.name | titlecase }}</div>
       <div class="col-3 text-center">
-        <app-input [formControlName]="item.flavour.name"></app-input>
+        <app-input [error]="form.controls[item.flavour.name].errors !== null" [formControlName]="item.flavour.name">
+        </app-input>
       </div>
       <div class="col-3 text-center">{{ item.quantity }}</div>
       <div class="col-3 text-center">
@@ -34,5 +35,6 @@
       </div>
     </div>
     <button [disabled]="!isValid" class="w-100 btn btn-outline-primary" type="submit">Restock</button>
+    <p class="text-danger" *ngIf="isFull">You have exceeded the maximum capacity</p>
   </form>
 </div>

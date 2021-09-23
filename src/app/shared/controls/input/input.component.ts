@@ -26,7 +26,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class InputComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Output() changed: EventEmitter<number> = new EventEmitter();
-
+  @Input() error: boolean;
   value: number = 0;
   isDisabled: boolean = false;
 

@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { RestockData } from './restock-data.model';
 import { StoreState } from '@app/core/model/StoreState';
+import { VendingItem } from '@app/core/model/VendingItem';
+import { isNumber } from '@app/shared/validators/number-validator';
 
 @Component({
   selector: 'app-restock',
@@ -51,7 +53,13 @@ export class RestockComponent implements OnInit {
     const group = {};
     const items = this.storeState.vendingItems;
     items.forEach((item) => {
-      group[item.flavour.name] = [0, Validators.min(0)];
+      group[item.flavour.name] = [
+        0,
+        {
+          updateOn: 'change',
+          validators: [Validators.min(0), isNumber()],
+        },
+      ];
     });
     return group;
   }
@@ -63,5 +71,8 @@ export class RestockComponent implements OnInit {
   }
   get remainingCapacity() {
     return this.totalCapacity - this.newTotalNumberOfCansAvailable;
+  }
+  byName(index: number, item: VendingItem) {
+    return item.flavour.name;
   }
 }
