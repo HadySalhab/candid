@@ -1,0 +1,16 @@
+.restock {
+  &__close-btn {
+    background-color: #eff6f7;
+    width: 2rem;
+    height: 2rem;
+  }
+  &__table-header {
+    background-color: #eff6f7;
+    padding: 0.5rem 0rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  &__data {
+    margin-bottom: 1rem;
+  }
+}
